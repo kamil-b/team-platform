@@ -4,9 +4,12 @@ server:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/team-platform
-    username: team
-    password: platform
+#    url: jdbc:h2:tcp://localhost/~/team-platform
+    url: jdbc:h2:tcp://localhost/~/test
+    #username: team
+    #password: platform
+    username: sa
+    password:
 
   jpa:
     properties.hibernate.dialect:
