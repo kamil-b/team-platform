@@ -6,11 +6,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Data
-@EqualsAndHashCode
 public class UserEvent {
 
     @Id

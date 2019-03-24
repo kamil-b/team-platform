@@ -1,21 +1,26 @@
 package pl.kassad.teamplatform.controller.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import pl.kassad.teamplatform.repository.model.UserEventType;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEventDto {
 
     private String id;
 
-    @JsonProperty("userId")
     private String userId;
 
-    private UserEventType type;
+    private String type;
 
+    //@DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
     private String description;

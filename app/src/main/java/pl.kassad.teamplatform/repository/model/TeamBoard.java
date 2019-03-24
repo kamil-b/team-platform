@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,13 @@ public class TeamBoard {
 
     private String name;
 
+    @ManyToOne
+    private User owner;
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
-    })
-    private List<User> members;
+    }, fetch = FetchType.EAGER)
+    private List<User> members = new ArrayList<>();
 
 }

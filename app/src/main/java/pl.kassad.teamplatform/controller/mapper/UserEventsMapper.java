@@ -1,17 +1,21 @@
 package pl.kassad.teamplatform.controller.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
 import pl.kassad.teamplatform.controller.model.UserEventDto;
 import pl.kassad.teamplatform.repository.model.UserEvent;
 
-@Mapper(componentModel = "spring")
-public interface UserEventsMapper {
+public class UserEventsMapper {
 
-    @Mappings(@Mapping(target = "userId", source = "entity.user.id"))
-    UserEventDto UserEventToUserEventDto(UserEvent entity);
+    public static UserEventDto UserEventToUserEventDto(UserEvent entity) {
+        if (entity == null) {
+            return null;
+        }
 
-    //List<UserEvent> mapUserEventsDtoToModel(List<UserEventDto> events);
+        return UserEventDto.builder()
+                .id(entity.getId())
+                .userId(entity.getUser().getId())
+                .type(entity.getType().toString())
+                .description(entity.getDescription())
+                .date(entity.getDate())
+                .build();
+    }
 }

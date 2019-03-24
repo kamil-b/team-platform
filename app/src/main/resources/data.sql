@@ -1,0 +1,14 @@
+INSERT INTO USER VALUES (1 , 'user', '{noop}user', 'ADMIN');
+INSERT INTO USER VALUES (5 , 'user5', '{bcrypt}$2a$04$TaCiyKj4/F2QFJqUT2F8pOj/Gz70PBsBF/a7ihYyNQwsSquxjJBw6', 'ADMIN');
+INSERT INTO USER VALUES (2 , 'user1', '{null}user1', 'ADMIN');
+INSERT INTO USER VALUES (3 , 'user2', 'user2', 'ADMIN');
+INSERT INTO USER VALUES (4 , 'user3', '{noop}user3', 'ADMIN');
+
+
+
+INSERT INTO USER_EVENT VALUES (1 , '2019-01-01', 'description1', 'VACATION', 1);
+INSERT INTO USER_EVENT VALUES (2 , '2019-02-01', 'description2', 'SICKNESS', 2);
+INSERT INTO USER_EVENT VALUES (3 , '2019-03-01', 'description3', 'WORK_FROM_HOME', 1);
+INSERT INTO USER_EVENT VALUES (4 , '2019-04-01', 'description4', 'SICKNESS', 3);
+INSERT INTO USER_EVENT VALUES (5 , '2019-05-01', 'description5', 'VACATION', 2);
+INSERT INTO USER_EVENT VALUES (6 , '2019-01-01', 'description6', 'WORK_FROM_HOME', 1);

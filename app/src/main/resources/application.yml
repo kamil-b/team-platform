@@ -1,6 +1,5 @@
 server:
-  port: 7777
-  context-path:
+  port: 8080
 
 spring:
   datasource:
@@ -14,3 +13,18 @@ spring:
     hibernate.ddl-auto: create
     show-sql: true
     format-sql: true
+
+security:
+  oauth2:
+    client:
+      client-id: kassad
+      client-secret: kassad
+    authorization:
+      check-token-access: isAuthenticated()
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+
