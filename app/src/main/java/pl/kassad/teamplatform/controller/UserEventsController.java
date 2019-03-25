@@ -30,7 +30,6 @@ public class UserEventsController {
 
     @PostMapping
     public void createNewEvents(@RequestBody UserEventListDto events) {
-
         userEventsService.createNewEvents(events);
     }
 }
