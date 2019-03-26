@@ -13,6 +13,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {HomeComponent} from './home/home.component';
+import {UserService} from "./service/user.service";
 
 const appRoutes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {path: 'home', component: HomeComponent},
-  { path: '**', component: HomeComponent }
+  {path: '**', component: HomeComponent}
 ];
 
 @NgModule({
@@ -44,7 +45,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

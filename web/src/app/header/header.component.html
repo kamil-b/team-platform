@@ -1,16 +1,21 @@
-<nav class="navbar navbar-expand-lg custom-header" >
-  <button class="navbar-toggler" type="button">
-  </button>
-  <a class="navbar-brand text-white" routerLink="/home" routerLinkActive="active">Home</a>
+<nav class="navbar navbar-expand-lg custom-header justify-content-between">
+  <ul class="navbar-nav">
+    <a class="navbar-brand text-white" routerLink="/home" routerLinkActive="active">Home</a>
+    <li class="nav-item active" *ngIf="isLogged()">
+      <a class="nav-link text-white" routerLink="/add-events" routerLinkActive="active">Add events</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav mr-3">
+    <li *ngIf="isLogged()" class="nav-item" >
+      <a class="nav-link text-white" (click)="logout()" routerLinkActive="active" style="cursor: pointer">Logout</a>
+    </li>
+    <li *ngIf="!isLogged()" class="nav-item">
+      <a class="nav-link text-white" routerLink="/sign-up" routerLinkActive="active">Register</a>
+    </li>
+    <li *ngIf="!isLogged()" class="nav-item">
+      <a class="nav-link text-white" routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
 
-  <div>
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link text-white" routerLink="/add-events" routerLinkActive="active">Add events <span class="sr-only ">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-    </ul>
-  </div>
+  </ul>
+
 </nav>

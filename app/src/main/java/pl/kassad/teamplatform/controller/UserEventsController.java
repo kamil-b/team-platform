@@ -3,8 +3,10 @@ package pl.kassad.teamplatform.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.kassad.teamplatform.controller.mapper.UserEventsMapper;
+import pl.kassad.teamplatform.controller.model.EventsRequest;
 import pl.kassad.teamplatform.controller.model.UserEventDto;
 import pl.kassad.teamplatform.controller.model.UserEventListDto;
+import pl.kassad.teamplatform.repository.model.UserEvent;
 import pl.kassad.teamplatform.services.UserEventsService;
 
 import java.util.List;
@@ -26,6 +28,12 @@ public class UserEventsController {
         return userEventsService.getAllUserEventsForUser(userId).stream()
                 .map(UserEventsMapper::UserEventToUserEventDto)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping
+    @RequestMapping(path = "/range")
+    public List<UserEvent> getAllEventsForTimeRange(@RequestBody EventsRequest eventsRequest){
+        return userEventsService.getAllEventsForTimeRange(eventsRequest);
     }
 
     @PostMapping

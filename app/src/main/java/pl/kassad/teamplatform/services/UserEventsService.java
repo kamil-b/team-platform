@@ -2,6 +2,7 @@ package pl.kassad.teamplatform.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.kassad.teamplatform.controller.model.EventsRequest;
 import pl.kassad.teamplatform.controller.model.UserEventListDto;
 import pl.kassad.teamplatform.repository.UserEventsRepository;
 import pl.kassad.teamplatform.repository.UserRepository;
@@ -33,7 +34,9 @@ public class UserEventsService {
             throw new IllegalArgumentException("no user with given id");
         }
 
-        List<UserEvent> events = eventsDto.getEvents().stream().map(
+        List<UserEvent> events = eventsDto.getEvents()
+                .stream()
+                .map(
                 event -> UserEvent
                         .builder()
                         .id(null)
@@ -45,5 +48,9 @@ public class UserEventsService {
         ).collect(Collectors.toList());
 
         userEventsRepository.saveAll(events);
+    }
+
+    public List<UserEvent> getAllEventsForTimeRange(EventsRequest eventsRequest) {
+    return null;
     }
 }

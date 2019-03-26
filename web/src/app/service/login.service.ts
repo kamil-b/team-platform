@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Rx";
+import {User} from "./model/user.model";
 
 @Injectable()
 export class LoginService {
@@ -17,23 +18,13 @@ export class LoginService {
     return this.http.post('http://localhost:8080/oauth/token', loginPayload, {headers});
   }
 
-/*  getUsers() {
-    return this.http.get(this.baseUrl + 'user?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+  isLogged(){
+    return sessionStorage.getItem('token') !== null;
   }
 
-  getUserById(id: number) {
-    return this.http.get(this.baseUrl + 'user/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
+  logout(){
+    sessionStorage.removeItem('token');
   }
 
-  createUser(user: User){
-    return this.http.post(this.baseUrl + 'user?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
-  }
 
-  updateUser(user: User): Observable {
-    return this.http.put(this.baseUrl + 'user/' + user.id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token, user);
-  }
-
-  deleteUser(id: number){
-    return this.http.delete(this.baseUrl + 'user/' + id + '?access_token=' + JSON.parse(window.sessionStorage.getItem('token')).access_token);
-  }*/
 }

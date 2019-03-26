@@ -1,6 +1,7 @@
 package pl.kassad.teamplatform.repository.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,8 +18,10 @@ import java.util.List;
 public class User  implements UserDetails{
 
     //https://www.devglan.com/spring-security/spring-boot-oauth2-angular
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
 
     private String name;
