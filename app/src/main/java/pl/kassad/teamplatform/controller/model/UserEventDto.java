@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -18,8 +17,7 @@ public class UserEventDto {
 
     private String type;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private LocalDate date;
+    private String date;
 
     private String description;
 }

@@ -1,39 +1,49 @@
 package pl.kassad.teamplatform.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import pl.kassad.teamplatform.controller.mapper.UserEventsMapper;
-import pl.kassad.teamplatform.controller.model.EventsRequest;
 import pl.kassad.teamplatform.controller.model.UserEventDto;
 import pl.kassad.teamplatform.controller.model.UserEventListDto;
-import pl.kassad.teamplatform.repository.model.UserEvent;
 import pl.kassad.teamplatform.services.UserEventsService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/events")
+@Slf4j
 public class UserEventsController {
 
     private final UserEventsService userEventsService;
+    private final UserEventsMapper mapper;
 
-    public UserEventsController(@Autowired UserEventsService userEventsService) {
+    public UserEventsController(@Autowired UserEventsService userEventsService,
+                                @Autowired UserEventsMapper mapper) {
         this.userEventsService = userEventsService;
+        this.mapper = mapper;
     }
 
     @GetMapping
-    @RequestMapping(path = "/{userId}")
-    public List<UserEventDto> getAllEventsForUser(@PathVariable(name = "userId") String userId) {
-        return userEventsService.getAllUserEventsForUser(userId).stream()
-                .map(UserEventsMapper::UserEventToUserEventDto)
+    @RequestMapping(path = "/{username}")
+    public List<UserEventDto> getAllEventsForUser(@PathVariable(name = "username") String username) {
+        return userEventsService.getAllUserEventsForUser(username)
+                .stream()
+                .map(mapper::map)
                 .collect(Collectors.toList());
     }
 
     @GetMapping
-    @RequestMapping(path = "/range")
-    public List<UserEvent> getAllEventsForTimeRange(@RequestBody EventsRequest eventsRequest){
-        return userEventsService.getAllEventsForTimeRange(eventsRequest);
+    @RequestMapping(path = "/batch/{username}")
+    public List<UserEventDto> getAllEventsForTimeRange(@PathVariable(name = "username") String username,
+                                                       @RequestParam(name = "startDate")
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                                       @RequestParam(name = "endDate")
+                                                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+        return mapper.map(userEventsService.getUserEventsForNextDays(username, startDate, endDate));
     }
 
     @PostMapping

@@ -1,12 +1,14 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Rx";
-import {User} from "./model/user.model";
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  private username;
+
+  constructor(private http: HttpClient) {
+  }
+
   baseUrl: string = 'http://localhost:8080/';
 
   login(loginPayload) {
@@ -18,13 +20,19 @@ export class LoginService {
     return this.http.post('http://localhost:8080/oauth/token', loginPayload, {headers});
   }
 
-  isLogged(){
+  isLogged() {
     return sessionStorage.getItem('token') !== null;
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('token');
   }
 
+  getUsername(){
+    return this.username;
+  }
 
+  setUsername(username) {
+    this.username = username;
+  }
 }

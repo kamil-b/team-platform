@@ -1,0 +1,48 @@
+.single-add-event-content {
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .event-button {
+
+    outline: none;
+    border: 0;
+    height: 60px;
+
+  }
+
+  .blured-button{
+    opacity: 0.2;
+  }
+
+  .type-button-VACATION {
+    background: lightseagreen;
+  }
+
+  .type-button-TRAINING {
+    background: yellowgreen;
+  }
+
+  .type-button-SICKNESS {
+    background: lightcoral;
+  }
+
+  .type-button-BUSINESS_TRIP {
+    background: lightsalmon;
+  }
+  .type-button-WORK_FROM_HOME {
+    background: lightgreen;
+  }
+  .type-button-OTHER {
+    background: cornflowerblue;
+  }
+  .type-button-NO_EVENT {
+    background: lightgray;
+  }
+
+  .date-text {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+}

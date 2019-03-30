@@ -14,13 +14,16 @@ import pl.kassad.teamplatform.services.UserService;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper mapper;
 
-    public UserController(@Autowired UserService userService) {
+    public UserController(@Autowired UserService userService,
+                          @Autowired UserMapper mapper) {
         this.userService = userService;
+        this.mapper = mapper;
     }
 
     @PostMapping
     public UserDto createUser(@RequestBody UserDto userDto){
-        return UserMapper.map(userService.createUser(UserMapper.map(userDto)));
+        return mapper.map(userService.createUser(mapper.map(userDto)));
     }
 }

@@ -14,6 +14,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {HomeComponent} from './home/home.component';
 import {UserService} from "./service/user.service";
+import {AddEventComponent} from './add-events/components/add-event/add-event.component';
+import {EventsService} from "./service/events.service";
 
 const appRoutes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    AddEventComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     LoginService,
-    UserService
+    UserService,
+    EventsService
   ],
   bootstrap: [AppComponent]
 })
