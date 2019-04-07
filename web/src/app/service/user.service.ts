@@ -8,7 +8,7 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  baseUrl: string = 'http://localhost:8080/';
+  baseUrl: string = 'http://localhost:8080/api/';
 
 
   createUser(user: User){
