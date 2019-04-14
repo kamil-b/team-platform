@@ -1,3 +1,4 @@
+
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {LoginService} from "./login.service";
@@ -11,7 +12,7 @@ export class EventsService {
               private loginService: LoginService) {
   }
 
-  baseUrl: string = 'http://localhost:8080';
+  baseUrl: string = 'http://localhost:8080/api';
 
 
   getEvents(startDate: Date, endDate: Date) {
@@ -32,3 +33,4 @@ export class EventsService {
     );
   }
 }
+

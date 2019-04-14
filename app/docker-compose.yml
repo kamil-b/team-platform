@@ -1,0 +1,27 @@
+version: "2"
+services:
+  user_service:
+    image: kamilbednarczyk/app:latest
+    container_name: team-platform
+    ports:
+      - 8080:8080
+    depends_on:
+      - h2database
+    environment:
+      spring.datasource.url: jdbc:h2:tcp://h2database:1521/~/team-platform
+      #security.oauth2.resource.token-info-uri: http://team-platform:8080/oauth/check_token
+      spring.datasource.username: team
+      spring.datasource.password: platform
+    networks:
+      - team-platform-network
+  h2database:
+    image: joedoe/h2db
+    container_name: h2database
+    ports:
+      - 1521:1521
+      - 81:81
+    networks:
+      - team-platform-network
+networks:
+  team-platform-network:
+    driver: bridge

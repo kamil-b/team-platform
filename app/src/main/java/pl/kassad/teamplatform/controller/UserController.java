@@ -10,7 +10,7 @@ import pl.kassad.teamplatform.controller.model.UserDto;
 import pl.kassad.teamplatform.services.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
