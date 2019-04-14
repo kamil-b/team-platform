@@ -16,7 +16,8 @@ export class AddEventComponent implements OnInit {
 
   @Output() public eventChanged: EventEmitter<UserEvent> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.eventTypes = [];
@@ -24,12 +25,13 @@ export class AddEventComponent implements OnInit {
 
     for (let item in UserEventType) {
       if (isNaN(Number(item))) {
-       this.eventTypes.push(item);
+        this.eventTypes.push(item);
       }
     }
   }
 
   setEventType($event: UserEventType) {
-    this.eventSelected = $event;
+    this.userEvent.type = $event;
+    this.eventChanged.emit(this.userEvent);
   }
 }

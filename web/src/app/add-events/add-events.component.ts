@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserEvent} from "../shared/model/user.event.model";
 import {EventsService} from "../service/events.service";
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {UserEventType} from "../shared/model/user.event.type.enum";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-events',
@@ -15,7 +17,7 @@ export class AddEventsComponent implements OnInit {
   events: UserEvent[];
   eventsForm: FormGroup;
 
-  constructor(private eventsService: EventsService) {
+  constructor(private eventsService: EventsService, private router: Router) {
     this.startDate = new Date();
     this.endDate = new Date();
 
@@ -44,17 +46,33 @@ export class AddEventsComponent implements OnInit {
 
   }
 
-  loadEvents(startDate , endDate) {
-    this.eventsService.getEvents(startDate , endDate).subscribe(
+  loadEvents(startDate, endDate) {
+    this.eventsService.getEvents(startDate, endDate).subscribe(
       (data: UserEvent[]) => {
         this.events = this.events.concat(data);
-        data.forEach((event:UserEvent) => this.addEvent(event));
+        data.forEach((event: UserEvent) => this.addEvent(event));
         console.log(this.eventsForms);
       }
     )
   }
 
-  addEvent(event: UserEvent) { this.eventsForms.push(new FormControl(event)); }
+  addEvent(event: UserEvent) {
+    this.eventsForms.push(new FormControl(event));
+  }
 
-  get eventsForms(): FormArray { return this.eventsForm.get('eventsForms') as FormArray; }
+  get eventsForms(): FormArray {
+    return this.eventsForm.get('eventsForms') as FormArray;
+  }
+
+  updateEvent(updated: UserEvent) {
+    this.events.filter(event => event.date === updated.date)
+      .map(event => event.type === updated.type);
+  }
+
+  submitEvents() {
+    const notEmpty = this.events.filter(event => event.type !== UserEventType.NO_EVENT);
+    this.eventsService.createEvents(notEmpty).subscribe(
+      data => this.router.navigate(['home'])
+    );
+  }
 }

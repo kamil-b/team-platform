@@ -16,20 +16,20 @@
     button {
       border: none;
       border-radius: 0;
-      background-color: $aqua-green;
+      background-color: $app-purple;
     }
 
     input {
       padding: 10px 0px;
       border: none;
       border-radius: 0;
-      border-bottom: solid 2px $aqua-green;
+      border-bottom: solid 2px $app-purple;
     }
 
     input:focus {
       outline: 0;
       box-shadow: none;
-      border-bottom: solid 2px $aqua-green;
+      border-bottom: solid 2px $app-purple;
     }
   }
 }

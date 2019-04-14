@@ -1,9 +1,6 @@
 package pl.kassad.teamplatform.repository.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,12 +10,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode
+@Data
 public class TeamBoard {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
     private String name;
 

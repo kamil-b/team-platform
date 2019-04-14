@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.kassad.teamplatform.controller.mapper.UserEventsMapper;
-import pl.kassad.teamplatform.controller.model.UserEventListDto;
 import pl.kassad.teamplatform.repository.UserEventsRepository;
 import pl.kassad.teamplatform.repository.UserRepository;
 import pl.kassad.teamplatform.repository.model.User;
@@ -22,7 +21,6 @@ import java.util.stream.IntStream;
 @AllArgsConstructor
 public class UserEventsService {
 
-    private final UserEventsMapper mapper;
     private final UserEventsRepository userEventsRepository;
     private final UserRepository userRepository;
 
@@ -34,32 +32,35 @@ public class UserEventsService {
         return userEventsRepository.findByUserId(user.getId());
     }
 
-    public void createNewEvents(UserEventListDto eventsDto) {
+    public void createNewEvents(String username, List<UserEvent> newEvents) {
 
-        if (userRepository.existsById(eventsDto.getUserId())) {
-            throw new IllegalArgumentException("no user with given id");
-        }
+        User user = userRepository.findByName(username).orElseThrow(
+                () -> new IllegalArgumentException("no user with given id"));
 
-        List<UserEvent> events = eventsDto.getEvents()
+        List<UserEvent> events = newEvents
                 .stream()
+                .filter(e -> !e.getType().equals(UserEventType.NO_EVENT))
                 .map(
-                        event -> UserEvent
-                                .builder()
-                                .id(null)
-                                .userId(eventsDto.getUserId())
-                                .date(mapper.map(event.getDate()))
-                                .description(event.getDescription())
-                                .type(UserEventType.valueOf(event.getType()))
-                                .build()
-                ).collect(Collectors.toList());
+                        e -> {
+                            UserEvent event = userEventsRepository.getByDate(e.getDate()).orElse(e);
+                            e.setUserId(user.getId());
+                            event.setType(e.getType());
+                            return event;
 
-        userEventsRepository.saveAll(events);
+                        }
+                )
+                .collect(Collectors.toList());
+
+        log.info(events.toString());
+
+        for (UserEvent event : events) {
+
+            userEventsRepository.save(event);
+        }
     }
-
 
     public List<UserEvent> getUserEventsForNextDays(String username, LocalDate startDate, LocalDate endDate) {
         log.info("startDate: {} , endDate: {}", startDate, endDate);
-
 
         User user = userRepository.findByName(username)
                 .orElseThrow(() -> new IllegalArgumentException("no user with given username"));

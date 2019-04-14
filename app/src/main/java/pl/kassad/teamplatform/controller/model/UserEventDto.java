@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserEventDto {
 
-    private String userId;
+    private Long userId;
 
     private String type;
 

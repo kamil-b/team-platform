@@ -21,18 +21,19 @@ export class LoginService {
   }
 
   isLogged() {
-    return sessionStorage.getItem('token') !== null;
+    return localStorage.getItem('token') !== null;
   }
 
   logout() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   getUsername(){
     return this.username;
   }
 
-  setUsername(username) {
+  setUserData(username, token) {
+    localStorage.setItem('token', token);
     this.username = username;
   }
 }

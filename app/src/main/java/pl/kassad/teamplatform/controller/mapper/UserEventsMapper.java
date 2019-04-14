@@ -18,7 +18,9 @@ public interface UserEventsMapper {
 
     UserEvent map(UserEventDto dto);
 
-    List<UserEventDto> map(List<UserEvent> entities);
+    List<UserEventDto> mapToDto(List<UserEvent> entities);
+
+    List<UserEvent> map(List<UserEventDto> dtos);
 
     default String map(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern(LOCAL_DATE_FORMAT));

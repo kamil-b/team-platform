@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from "../service/login.service";
+import {LoginService} from "../../service/login.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-main-header',
+  templateUrl: './main-header.component.html',
+  styleUrls: ['./main-header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 

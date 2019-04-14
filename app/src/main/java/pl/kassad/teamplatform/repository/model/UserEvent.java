@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -15,9 +16,9 @@ public class UserEvent {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
-    private String userId;
+    private Long userId;
 
     @Enumerated(EnumType.STRING)
     private UserEventType type;

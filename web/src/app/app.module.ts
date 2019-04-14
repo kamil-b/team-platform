@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {AddEventsComponent} from './add-events/add-events.component';
 import {MainWindowComponent} from './main-window/main-window.component';
-import {HeaderComponent} from './header/header.component';
+import {HeaderComponent} from './header/main-header/main-header.component';
 import {LoginComponent} from './login/login.component';
 import {LoginService} from "./service/login.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -16,10 +16,14 @@ import {HomeComponent} from './home/home.component';
 import {UserService} from "./service/user.service";
 import {AddEventComponent} from './add-events/components/add-event/add-event.component';
 import {EventsService} from "./service/events.service";
+import { BoardComponent } from './board/board.component';
+import { BottomHeaderComponent } from './header/bottom-header/bottom-header.component';
+import { CreateBoardComponent } from './board/create-board/create-board.component';
 
 const appRoutes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'add-events', component: AddEventsComponent},
+  {path: 'board-list', component: BoardComponent},
   {path: 'login', component: LoginComponent},
   {
     path: '',
@@ -39,7 +43,10 @@ const appRoutes: Routes = [
     LoginComponent,
     SignUpComponent,
     HomeComponent,
-    AddEventComponent
+    AddEventComponent,
+    BoardComponent,
+    BottomHeaderComponent,
+    CreateBoardComponent
   ],
   imports: [
     BrowserModule,

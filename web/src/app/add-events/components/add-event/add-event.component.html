@@ -4,7 +4,7 @@
       {{userEvent.date | date:'EEEE dd.MM'}}
     </div>
       <div class="col w-100 p-0 mx-1" *ngFor="let event of eventTypes">
-        <button class="w-100 event-button type-button-{{event}}" [ngClass]="{'blured-button': event !== eventSelected}" (click)="setEventType(event)">{{event}}</button>
+        <button class="w-100 event-button type-button-{{event}}" [ngClass]="{'blured-button': event !== userEvent.type}" (click)="setEventType(event)">{{event}}</button>
       </div>
   </div>
 </div>

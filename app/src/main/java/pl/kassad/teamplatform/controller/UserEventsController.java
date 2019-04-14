@@ -43,11 +43,12 @@ public class UserEventsController {
                                                        @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
                                                        @RequestParam(name = "endDate")
                                                        @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        return mapper.map(userEventsService.getUserEventsForNextDays(username, startDate, endDate));
+        return mapper.mapToDto(userEventsService.getUserEventsForNextDays(username, startDate, endDate));
     }
 
     @PostMapping
     public void createNewEvents(@RequestBody UserEventListDto events) {
-        userEventsService.createNewEvents(events);
+        log.info("creating new events: {} for user: {}", events.getEvents(), events.getUsername());
+        userEventsService.createNewEvents(events.getUsername(), mapper.map(events.getEvents()));
     }
 }
