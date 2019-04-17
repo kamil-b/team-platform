@@ -1,5 +1,6 @@
 package pl.kassad.teamplatform.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,16 +17,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/events")
 @Slf4j
+@AllArgsConstructor
 public class UserEventsController {
 
     private final UserEventsService userEventsService;
     private final UserEventsMapper mapper;
-
-    public UserEventsController(@Autowired UserEventsService userEventsService,
-                                @Autowired UserEventsMapper mapper) {
-        this.userEventsService = userEventsService;
-        this.mapper = mapper;
-    }
 
     @GetMapping
     @RequestMapping(path = "/{username}")

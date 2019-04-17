@@ -1,8 +1,8 @@
 INSERT INTO USER VALUES (1 , 'user', '{noop}user', 'ADMIN');
-INSERT INTO USER VALUES (5 , 'user5', '{bcrypt}$2a$04$TaCiyKj4/F2QFJqUT2F8pOj/Gz70PBsBF/a7ihYyNQwsSquxjJBw6', 'ADMIN');
-INSERT INTO USER VALUES (2 , 'user1', '{null}user1', 'ADMIN');
-INSERT INTO USER VALUES (3 , 'user2', 'user2', 'ADMIN');
-INSERT INTO USER VALUES (4 , 'user3', '{noop}user3', 'ADMIN');
+INSERT INTO USER VALUES (2 , 'user5', '{bcrypt}$2a$04$TaCiyKj4/F2QFJqUT2F8pOj/Gz70PBsBF/a7ihYyNQwsSquxjJBw6', 'ADMIN');
+INSERT INTO USER VALUES (3 , 'user1', '{null}user1', 'ADMIN');
+INSERT INTO USER VALUES (4 , 'user2', 'user2', 'ADMIN');
+INSERT INTO USER VALUES (5 , 'user3', '{noop}user3', 'ADMIN');
 
 INSERT INTO TEAM_BOARD VALUES (1 ,'board 1',1);
 INSERT INTO TEAM_BOARD VALUES (2 ,'board 2',2);

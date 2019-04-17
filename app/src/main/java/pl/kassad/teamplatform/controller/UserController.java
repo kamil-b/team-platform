@@ -1,5 +1,6 @@
 package pl.kassad.teamplatform.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,16 +12,11 @@ import pl.kassad.teamplatform.services.UserService;
 
 @RestController
 @RequestMapping("/api/users")
+@AllArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final UserMapper mapper;
-
-    public UserController(@Autowired UserService userService,
-                          @Autowired UserMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
-    }
 
     @PostMapping
     public UserDto createUser(@RequestBody UserDto userDto){

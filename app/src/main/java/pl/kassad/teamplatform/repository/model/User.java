@@ -20,7 +20,7 @@ public class User  implements UserDetails{
     //https://www.devglan.com/spring-security/spring-boot-oauth2-angular
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
