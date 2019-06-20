@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg custom-header justify-content-between">
-  <ul class="navbar-nav ">
+  <ul class="navbar-nav">
     <li>
       <a class="navbar-brand text-white px-2" routerLink="/home" routerLinkActive="active">Home</a>
     </li>
@@ -11,7 +11,13 @@
       <a class="nav-link text-white" routerLink="/board-list" routerLinkActive="active">Boards</a>
     </li>
   </ul>
+
   <ul class="navbar-nav mr-3">
+    <div *ngIf="isLogged()" class="my-2">
+      <a class="nav-link text-white name-plate">{{username}}
+        <i class="far fa-user fa-lg"></i></a>
+    </div>
+
     <li *ngIf="isLogged()" class="nav-item ">
       <a class="nav-link text-white bolder-on-hover" (click)="logout()" routerLinkActive="active">Logout</a>
     </li>

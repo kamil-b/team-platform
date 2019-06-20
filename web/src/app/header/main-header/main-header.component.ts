@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../service/login.service";
 
 @Component({
@@ -8,12 +8,16 @@ import {LoginService} from "../../service/login.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  public username;
 
-  ngOnInit() {
+  constructor(private loginService: LoginService) {
   }
 
-  isLogged(){
+  ngOnInit() {
+    this.username = this.loginService.getUsername();
+  }
+
+  isLogged() {
     return this.loginService.isLogged();
   }
 

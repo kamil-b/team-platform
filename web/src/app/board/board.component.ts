@@ -28,4 +28,7 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.boardsSubscription.unsubscribe();
   }
 
+  joinTeam(board: string) {
+    this.boardService.addMemberToBoard(board).subscribe(data => console.log(data));
+  }
 }

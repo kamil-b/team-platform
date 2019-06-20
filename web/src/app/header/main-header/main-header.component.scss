@@ -9,9 +9,16 @@
     padding: 10px 5px;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       background-color: #D51A6B;
       font-weight: bolder;
     }
+  }
+
+  .name-pate {
+    span {
+      padding: 20px;
+    }
+
   }
 }

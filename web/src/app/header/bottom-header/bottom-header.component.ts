@@ -14,7 +14,7 @@ export class BottomHeaderComponent implements OnInit {
   ngOnInit() {
     this.navBars = [
       {
-        name: 'Create',
+        name: 'Create New',
         link: 'create-board'
       },
       {

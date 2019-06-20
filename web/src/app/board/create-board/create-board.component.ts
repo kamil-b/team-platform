@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BoardService} from "../../service/board.service";
 import {LoginService} from "../../service/login.service";
 
@@ -18,8 +18,8 @@ export class CreateBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = new FormControl('');
-    this.description = new FormControl('');
+    this.name = new FormControl('', [Validators.required]);
+    this.description = new FormControl('', [Validators.required]);
 
     this.boardForm = new FormGroup({
       name: this.name,

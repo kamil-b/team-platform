@@ -1,16 +1,21 @@
-<div class="row">
-  <div class="col">
-    <app-bottom-header></app-bottom-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <app-bottom-header></app-bottom-header>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-4">Nazwa</div>
-  <div class="col-4">Właściciel</div>
-  <div class="col-4">Zespół</div>
-</div>
-<div class="row" *ngFor="let board of boards">
-  <div class="col-4">{{board.name}}</div>
-  <div class="col-4">{{board.ownerName}}</div>
-  <div class="col-4">{{board.members}}</div>
+  <div class="row headers">
+    <div class="col-3">Nazwa</div>
+    <div class="col-3">Właściciel</div>
+    <div class="col-3">Zespół</div>
+  </div>
+  <div class="row" *ngFor="let board of boards">
+    <div class="col-3">{{board.name}}</div>
+    <div class="col-3">{{board.ownerName}}</div>
+    <div class="col-3"><button class="btn btn-link" *ngFor="let member of board.members">{{member.name}}</button></div>
+    <div class="col-3"><button class="btn btn-link" (click)="joinTeam(board.name)"><i class="fas fa-plus fa-lg"></i> Dołącz</button>
+      <button class="btn btn-link"><i class="far fa-eye fa-lg"></i></button>
+    </div>
+  </div>
 </div>
