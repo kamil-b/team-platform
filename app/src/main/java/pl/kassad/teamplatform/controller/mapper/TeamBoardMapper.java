@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = UserMapper.class)
 public interface TeamBoardMapper {
 
+    @Mapping(target = "ownerName", source = "owner.name")
     TeamBoardDto map(TeamBoard board);
 
     @Mapping(target = "owner.name", source = "ownerName")

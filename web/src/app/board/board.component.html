@@ -1,1 +1,16 @@
-<app-bottom-header [navBars]="navs"></app-bottom-header>
+<div class="row">
+  <div class="col">
+    <app-bottom-header></app-bottom-header>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">Nazwa</div>
+  <div class="col-4">Właściciel</div>
+  <div class="col-4">Zespół</div>
+</div>
+<div class="row" *ngFor="let board of boards">
+  <div class="col-4">{{board.name}}</div>
+  <div class="col-4">{{board.ownerName}}</div>
+  <div class="col-4">{{board.members}}</div>
+</div>

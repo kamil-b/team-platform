@@ -19,12 +19,14 @@ import {EventsService} from "./service/events.service";
 import { BoardComponent } from './board/board.component';
 import { BottomHeaderComponent } from './header/bottom-header/bottom-header.component';
 import { CreateBoardComponent } from './board/create-board/create-board.component';
+import {BoardService} from "./service/board.service";
 
 const appRoutes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'add-events', component: AddEventsComponent},
   {path: 'board-list', component: BoardComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'create-board', component: CreateBoardComponent},
   {
     path: '',
     redirectTo: '/home',
@@ -58,7 +60,8 @@ const appRoutes: Routes = [
   providers: [
     LoginService,
     UserService,
-    EventsService
+    EventsService,
+    BoardService
   ],
   bootstrap: [AppComponent]
 })

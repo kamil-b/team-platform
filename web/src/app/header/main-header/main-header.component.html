@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg custom-header justify-content-between">
+<nav class="navbar sticky-top navbar-expand-lg custom-header justify-content-between">
   <ul class="navbar-nav ">
-    <a class="navbar-brand text-white" routerLink="/home" routerLinkActive="active">Home</a>
+    <li>
+      <a class="navbar-brand text-white px-2" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+
     <li class="nav-item active" *ngIf="isLogged()">
       <a class="nav-link text-white" routerLink="/add-events" routerLinkActive="active">Add events</a>
     </li>
@@ -9,14 +12,14 @@
     </li>
   </ul>
   <ul class="navbar-nav mr-3">
-    <li *ngIf="isLogged()" class="nav-item" >
-      <a class="nav-link text-white" (click)="logout()" routerLinkActive="active" style="cursor: pointer">Logout</a>
+    <li *ngIf="isLogged()" class="nav-item ">
+      <a class="nav-link text-white bolder-on-hover" (click)="logout()" routerLinkActive="active">Logout</a>
     </li>
     <li *ngIf="!isLogged()" class="nav-item">
       <a class="nav-link text-white" routerLink="/sign-up" routerLinkActive="active">Register</a>
     </li>
     <li *ngIf="!isLogged()" class="nav-item">
-      <a class="nav-link text-white" routerLink="/login" routerLinkActive="active">Login</a>
+      <a class="nav-link text-white bolder-on-hover" routerLink="/login" routerLinkActive="active">Login</a>
     </li>
 
   </ul>

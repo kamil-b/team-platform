@@ -1,31 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BoardService} from "../service/board.service";
+import {Board} from "../shared/model/board.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
 
-  navs: any[];
+  private boardsSubscription: Subscription;
 
-  constructor() { }
+  public boards: Board[];
+
+  constructor(private boardService: BoardService) {
+    this.boards = [];
+  }
 
   ngOnInit() {
-    this.navs = [
-      {
-        name: 'Create',
-        link: 'create-board'
-      },
-      {
-        name: 'Search',
-        link: 'search-board'
-      },
-      {
-        name: 'Summary',
-        link: 'summary-board'
-      }
-    ]
+    this.boardsSubscription = this.boardService.getBoards().subscribe(
+      (boards: Board[]) => this.boards = boards
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.boardsSubscription.unsubscribe();
   }
 
 }

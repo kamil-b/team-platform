@@ -1,6 +1,5 @@
-<div class="container-fluid" >
+<div class="container-fluid bg" >
   <div class="row login-row" >
-
     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-6 mt-5 login-form-container" >
       <h2 class="mb-5" style="text-align: center">Welcome</h2>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -12,10 +11,9 @@
           <input placeholder="Password" type="password" class="form-control" formControlName="password"
                  autocomplete="off">
         </div>
-        <button class="btn btn-success w-100" [disabled]="loginForm.invalid">Login</button>
+        <button class="btn btn-success w-100 mt-4" [disabled]="loginForm.invalid">Login</button>
       </form>
       <p  class="sign-up-text" (click)="signUp()" >Don't have an account? Sign up</p>
     </div>
-
   </div>
 </div>

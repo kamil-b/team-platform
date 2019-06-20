@@ -1,3 +1,13 @@
-<p>
-  create-board works!
-</p>
+
+<div class="w-25">
+  <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+    <div class="input-row">
+      <input placeholder="Nazwa" type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="input-row" >
+      <input placeholder="Opis" type="text" class="form-control" formControlName="description">
+    </div>
+    <button class="btn btn-success w-100" [disabled]="boardForm.invalid">Wyślij</button>
+  </form>
+
+</div>

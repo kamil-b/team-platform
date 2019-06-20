@@ -1,14 +1,17 @@
 package pl.kassad.teamplatform.controller.mapper;
 
 import org.mapstruct.Mapper;
+import pl.kassad.teamplatform.controller.model.CreateUserDto;
 import pl.kassad.teamplatform.controller.model.UserDto;
 import pl.kassad.teamplatform.repository.model.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    User map(UserDto dto);
+    User map(CreateUserDto dto);
 
-    UserDto map(User entity);
+    CreateUserDto map(User entity);
+
+    UserDto mapToUserDto(User entity);
 
 }

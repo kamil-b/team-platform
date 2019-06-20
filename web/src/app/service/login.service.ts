@@ -4,12 +4,11 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class LoginService {
 
-  private username;
+  private static username: string;
 
   constructor(private http: HttpClient) {
   }
 
-  baseUrl: string = 'http://localhost:8080/';
 
   login(loginPayload) {
     const headers = {
@@ -28,12 +27,18 @@ export class LoginService {
     localStorage.removeItem('token');
   }
 
-  getUsername(){
-    return this.username;
+  getUsername() {
+    return localStorage.getItem('username');
   }
 
-  setUserData(username, token) {
+  getToken() {
+    if (this.isLogged()) {
+      return JSON.parse(localStorage.getItem('token')).access_token;
+    }
+  }
+
+  setUserData(username: string, token) {
     localStorage.setItem('token', token);
-    this.username = username;
+    localStorage.setItem('username', username);
   }
 }

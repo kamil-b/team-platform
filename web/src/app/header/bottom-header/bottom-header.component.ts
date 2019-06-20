@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-bottom-header',
@@ -7,11 +7,25 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BottomHeaderComponent implements OnInit {
 
-  @Input() navBars: any[] = [];
+  public navBars: any[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.navBars = [
+      {
+        name: 'Create',
+        link: 'create-board'
+      },
+      {
+        name: 'Search',
+        link: 'search-board'
+      },
+      {
+        name: 'Summary',
+        link: 'summary-board'
+      }
+    ];
   }
 
 }

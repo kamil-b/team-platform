@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/api/boards")
 @AllArgsConstructor
 public class TeamBoardController {
 

@@ -1,4 +1,17 @@
 @import "../../../styles";
-.custom-header{
+
+.custom-header {
   background-color: $app-purple;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  li {
+    padding: 10px 5px;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #D51A6B;
+      font-weight: bolder;
+    }
+  }
 }

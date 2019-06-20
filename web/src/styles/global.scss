@@ -2,3 +2,16 @@
   border-radius: 0;
   background-color: red;
 }
+
+
+
+
+.bg {
+  background-image: url("/assets/64051.jpg");
+  height: 100%;
+
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

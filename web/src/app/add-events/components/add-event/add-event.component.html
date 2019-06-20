@@ -1,9 +1,9 @@
 <div class="container-fluid single-add-event-content">
   <div class="row justify-content-between">
-    <div class="col-2 date-text">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl px-0 mx-1 w-100 date-text">
       {{userEvent.date | date:'EEEE dd.MM'}}
     </div>
-      <div class="col w-100 p-0 mx-1" *ngFor="let event of eventTypes">
+      <div class="col-sm-3 col-md-3 col-lg-3 col-xl px-0 mx-1 w-100" *ngFor="let event of eventTypes">
         <button class="w-100 event-button type-button-{{event}}" [ngClass]="{'blured-button': event !== userEvent.type}" (click)="setEventType(event)">{{event}}</button>
       </div>
   </div>

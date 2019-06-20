@@ -14,9 +14,7 @@ import java.util.List;
 public class TeamBoardDto {
 
     private String name;
-
     private String ownerName;
-
-    private List<UserDto> members;
+    private List<CreateUserDto> members;
 
 }
